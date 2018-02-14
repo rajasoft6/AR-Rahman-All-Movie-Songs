@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Online Cdn -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Offline cdn -->
+    <!-- bootstrap css -->
+    <!-- <link rel="stylesheet" href="css/bootstrap-4.0.0//css/bootstrap.min.css"> -->
+    <!-- jquery -->
+    <!-- <script src="css/jquery/jquery-3.3.1.min.js"></script> -->
+    <!-- bootstrap js -->
+    <!-- <script src="css/bootstrap-4.0.0/js/bootstrap.min.js"></script> -->
+
+
+    <title>A R Rahman All Movie Songs</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .header {
+            height: 10%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #555555;
+        }
+
+        table {
+            margin-top: 1%;
+        }
+
+        body {
+            margin-top: 1%;
+            background-image: url(bac.jpg);
+            text-align: center;
+        }
+
+        thead {
+            color: #6610f2;
+        }
+
+        #title,
+        #year {
+            text-align: left;
+        }
+
+        .btn {
+            border-radius: 0rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header bg-success">
+            <h2>A R Rahman All Movie Songs</h2>
+            <p>Download songs free</p>
+            <div class="bg-success">
+                <p style="color:#FFEB3B;">
+                    <small>Design and Developed by</small>
+                    <span>
+                        <strong>Rajadurai</strong>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- header end -->
+        <div class="table-responsive-md">
+            <table id="personDataTable" class="table table-dark">
+                <thead class="bg-warning">
+                    <tr>
+                        <th>S.No</th>
+                        <th style="text-align:left" ;>Movie Name</th>
+                        <th style="text-align:left" ;>Year</th>
+                        <th>Download</th>
+                        <th>Report Error</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <!-- table end -->
+
+        <footer class="bg-primary">
+            <p style="color:#ffffff;">Design and Developed by
+                <span style="color:red;background-color:yellow;">Rajadurai</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        $.ajax({
+            //url: 'https://jsonplaceholder.typicode.com/posts',
+            url: 'https://10rs.000webhostapp.com/ar/json-data.json',
+            //url: 'json-data.json',
+            type: "get",
+            dataType: "json",
+
+            success: function (data) {
+                drawTable(data);
+            }
+        });
+
+        function drawTable(data) {
+            for (var i = 0; i < data.length; i++) {
+                drawRow(data[i]);
+            }
+        }
+
+        function drawRow(rowData) {
+            var row = $("<tr />")
+            $("#personDataTable").append(row);
+            row.append($("<td>" + rowData.id + "</td>"));
+            row.append($("<td id='title'>" + rowData.title + "</td>"));
+            row.append($("<td id='year'>" + rowData.year + "</td>"));
+            row.append($("<td><a href='" + rowData.link +
+                "' class='btn btn-info' role='button' target='_blank'>Download</a></td>"));
+            row.append($("<td><a href='" + rowData.report +
+                "' class='btn btn-danger' role='button' target='_blank'>Report</a></td>"));
+        }
+    </script>
+    <!-- <a href="#" target='_blank'class="btn btn-info" role="button">Link Button</a> -->
+    <!-- <button class='btn btn-info' target='_blank'>Download</button></a> -->
+
+</body>
+
+</html>
